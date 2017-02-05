@@ -1,0 +1,105 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AddressBookBundle:Person:showPerson{% endblock %}
+
+{% block body %}
+    <div class ="container">
+        <h1>Welcome to the show Person page</h1>
+  
+        <div class="row">
+            <div class="col-md-12">
+                <h3>User details:</h3>
+            
+                <table class="table">
+                    <tr>
+                       <td>Name:</td>
+                       <td> {{person.name}}</td>
+                    </tr>  
+                    <tr>
+                       <td>Surname:</td>
+                       <td> {{person.surname}}</td>
+                    </tr> 
+                    <tr>
+                       <td>Description:</td>
+                       <td> {{person.description}}</td>
+                    </tr>  
+                </table>
+            </div>
+        </div>
+                    
+        <div class="row">
+                    
+            <div class="col-md-4">
+                <h3>Phones:</h3>
+                {% if person.phones | length > 0 %}
+
+                    <table class="table">
+                        <tr>
+                            <th>Phone</th>
+                        </tr>
+                        {% for phone in person.phones %}
+                                    <tr>
+                                        <td> {{ phone.number }} </td>
+                                    </tr>    
+                        {% endfor %}
+                   </table>
+                {% else %}
+                    <p>No phone numbers...</p>
+                {% endif %}
+            </div>
+       
+                 
+                    
+            <div class="col-md-4">
+                <h3>Addresses:</h3>
+                {% if person.addresses | length > 0 %}
+
+                    <table class="table">
+                        <tr>
+                            <th>Address</th>
+                        </tr>
+                        {% for address in person.addresses %}
+                                    <tr>
+                                        <td> {{ address.city }}, {{address.street}},
+                                             {{ address.number}}, {{address.flatNo}}
+                                        </td>
+                                    </tr>    
+                        {% endfor %}
+                   </table>
+                {% else %}
+                    <p>No address...</p>
+                {% endif %}
+            </div>
+       
+                    
+            <div class="col-md-4">
+                <h3>Emails:</h3>
+                {% if person.emails | length > 0 %}
+
+                    <table class="table">
+                        <tr>
+                            <th>Email</th>
+                        </tr>
+                        {% for email in person.emails %}
+                                    <tr>
+                                        <td> {{ email.address }}
+                                        </td>
+                                    </tr>    
+                        {% endfor %}
+                   </table>
+                {% else %}
+                    <p>No email...</p>
+                {% endif %}
+            </div>
+        </div>  
+   {#         
+            <div class="col-md-4">
+                    <div class="alert alert-success" role="alert">aaa</div>
+                    <div class="alert alert-info" role="alert">bbb</div>
+                    <div class="alert alert-warning" role="alert">ccc</div>
+                    <div class="alert alert-danger" role="alert">...</div>
+            </div>
+   #}
+
+    </div>
+{% endblock %}
